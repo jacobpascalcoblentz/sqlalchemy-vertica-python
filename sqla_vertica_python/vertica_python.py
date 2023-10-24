@@ -107,7 +107,7 @@ class VerticaDialect(PGDialect):
         return [[], opts]
 
 
-    def has_schema(self, connection, schema):
+    def has_schema(self, connection, schema, info_cache=None):
         query = ("SELECT EXISTS (SELECT schema_name FROM v_catalog.schemata "
                  "WHERE schema_name='%s')") % (schema)
         rs = connection.execute(text(query))
